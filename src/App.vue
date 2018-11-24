@@ -1,11 +1,15 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <v-btn icon @click="$router.go(-1)">
+      <v-btn
+        v-if="showBackButton"
+        icon
+        @click="$router.go(-1)"
+      >
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title class="headline">
-        <img alt="Vue logo" src="./assets/twitch.png" style="height: 40px;">
+        <img alt="Vue logo" src="./assets/twitch.png" style="height: 30px;">
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -16,6 +20,17 @@
   </v-app>
 </template>
 
+<script>
+export default {
+  name: 'app',
+  computed: {
+    showBackButton () {
+      return this.$route.name === 'stream-details'
+    }
+  }
+}
+</script>
+
 <style>
 .headline {
   display: flex;
@@ -24,5 +39,9 @@
 .content {
   width: 1056px;
   margin: auto;
+}
+
+.number-of-items input {
+  text-align: right;
 }
 </style>

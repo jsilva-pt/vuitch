@@ -1,6 +1,7 @@
-const STREAMS_LOADING = (state) => {
+const STREAMS_LOADING = (state, query) => {
   state.streamsLoading = true
   state.streamsError = false
+  state.query = query
 }
 
 const STREAMS_UPDATED = (state, data) => {
@@ -25,10 +26,15 @@ const STREAMS_ADDED = (state, data) => {
   state.nextPage = data.next
 }
 
+const STREAM_UPDATED = (state, data) => {
+  state.stream = data
+}
+
 export default {
   STREAMS_LOADING,
   STREAMS_LOADING_MORE,
   STREAMS_UPDATED,
   STREAMS_ADDED,
-  STREAMS_ERROR
+  STREAMS_ERROR,
+  STREAM_UPDATED
 }

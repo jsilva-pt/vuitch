@@ -1,7 +1,7 @@
 <template>
   <div class="empty-query">
     <v-icon size="60">search</v-icon>
-    What stream do you want to see?
+    <span class="subheading grey--text">{{ $t('suggestion') }}</span>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
 <style scoped>
 .empty-query {
   margin: auto;
-  max-width: 1320px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,7 +1,7 @@
-import { apiSearchStreams } from '@/api'
+import { apiSearchStreams, apiGetStream } from '@/api'
 
 const searchStreams = ({ commit }, params) => {
-  commit('STREAMS_LOADING')
+  commit('STREAMS_LOADING', params.query)
 
   if (params.query) {
     apiSearchStreams({ params })
@@ -28,7 +28,21 @@ const searchMoreStreams = ({ commit, state }) => {
     })
 }
 
+const getStream = ({ commit, state }, id) => {
+  // commit('STREAM_LOADING')
+
+  apiGetStream(id)
+    .then((response) => {
+      console.log('yoo', response)
+      commit('STREAM_UPDATED', response)
+    })
+    .catch(() => {
+      // commit('STREAM_ERROR')
+    })
+}
+
 export default {
+  getStream,
   searchStreams,
   searchMoreStreams
 }

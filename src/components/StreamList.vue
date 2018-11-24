@@ -18,7 +18,7 @@
         @click="$emit('load-more')"
         color="#4b367c"
       >
-        Load more streams
+        {{ $t('load_more', { num: limit}) }}
       </v-btn>
     </div>
   </div>
@@ -26,7 +26,7 @@
 
 <script>
 import StreamCard from './StreamCard'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'StreamList',
   components: {
@@ -35,6 +35,9 @@ export default {
   props: {
     streams: {
       type: Array
+    },
+    limit: {
+      type: Number
     }
   },
   computed: {

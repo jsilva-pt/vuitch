@@ -5,19 +5,21 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "about" */ './views/StreamsSearch.vue')
+      name: 'search',
+      component: () => import(/* webpackChunkName: "StreamSearch" */ './views/StreamSearch.vue')
     },
     {
       path: '/channel/:name',
       name: 'stream-details',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/StreamDetails.vue')
+      component: () => import(/* webpackChunkName: "StreamDetails" */ './views/StreamDetails.vue')
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })

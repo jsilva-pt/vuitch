@@ -11,7 +11,9 @@ const state = {
   streamsLoadingMore: false,
   streamsError: false,
   streams: null,
-  nextPage: null
+  nextPage: null,
+  query: null,
+  stream: null
 }
 
 export default new Vuex.Store({

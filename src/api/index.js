@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-// axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL
 axios.defaults.headers.common['Client-ID'] = process.env.VUE_APP_TWITCH_CLIENT_ID
 
 const apiSearchStreams = ({
@@ -8,6 +7,7 @@ const apiSearchStreams = ({
   params }) => {
   return new Promise((resolve, reject) => {
     var url = link || `${process.env.VUE_APP_API_BASE_URL}kraken/search/streams`
+
     axios.get(url, { params })
       .then(response => {
         var streams = response.data.streams.map(x => {
@@ -28,9 +28,39 @@ const apiSearchStreams = ({
           }
         })
 
+        let {
+          next
+        } = response.data._links
+
         resolve({
           streams,
-          next: response.data._links.next
+          next
+        })
+      })
+      .catch(() => {
+        reject(new Error('fail'))
+      })
+  })
+}
+
+const apiGetStream = (id) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`${process.env.VUE_APP_API_BASE_URL}kraken/streams/${id}`)
+      .then(response => {
+        console.log(response)
+
+        var {
+          channel: {
+            status,
+            views
+          } = {},
+          viewers
+        } = response.data.stream
+
+        resolve({
+          viewers,
+          views,
+          status
         })
       })
       .catch(() => {
@@ -40,5 +70,6 @@ const apiSearchStreams = ({
 }
 
 export {
-  apiSearchStreams
+  apiSearchStreams,
+  apiGetStream
 }

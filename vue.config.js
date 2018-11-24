@@ -1,4 +1,7 @@
 module.exports = {
+  baseUrl: process.env.NODE_ENV === 'production'
+    ? '/vuitch/'
+    : '/',
   pluginOptions: {
     i18n: {
       locale: 'en',

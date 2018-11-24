@@ -5,7 +5,7 @@
       color="#f07838"
       class="loader mb-3"
     />
-    Getting Streams
+    <span class="subheading grey--text">{{ $t('loading') }}</span>
   </div>
 </template>
 
@@ -18,7 +18,6 @@ export default {
 <style>
 .stream-loading {
   margin: auto;
-  max-width: 1320px;
   display: flex;
   flex-direction: column;
   justify-content: center;

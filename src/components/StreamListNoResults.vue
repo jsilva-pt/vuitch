@@ -1,7 +1,7 @@
 <template>
-  <div class="empty-query">
-    <v-icon size="60">search</v-icon>
-    No results
+  <div class="no-results">
+    <v-icon size="60">list</v-icon>
+    <span class="subheading grey--text">{{ $t('no_results') }}</span>
   </div>
 </template>
 
@@ -12,9 +12,8 @@ export default {
 </script>
 
 <style scoped>
-.empty-query {
+.no-results {
   margin: auto;
-  max-width: 1320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
