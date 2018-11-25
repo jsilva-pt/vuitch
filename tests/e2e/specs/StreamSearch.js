@@ -6,7 +6,7 @@ describe('Stream Search', () => {
   })
 
   it('Shows msg to start searching', () => {
-    cy.get('.empty-query').should('exist')
+    cy.get('.stream-list-empty-query').should('exist')
   })
 
   it('Search returns # results', () => {
@@ -15,7 +15,7 @@ describe('Stream Search', () => {
     // Sometimes the api returns less items than requested so
     // lets test the number of results inside a range of values
     cy.get('.stream-card').should('have.length.above', 0)
-    cy.get('.stream-card').should('have.length.below', 25)
+    cy.get('.stream-card').should('have.length.below', 26)
   })
 
   it('Load more returns more # results', () => {
@@ -40,7 +40,7 @@ describe('Stream Search', () => {
     cy.get('.cy-search input').clear().type('aaaaaaaaaaaaaaaaaaaaaaaa')
 
     cy.get('.stream-card').should('have.length', 0)
-    cy.get('.no-results').should('exist')
+    cy.get('.stream-list-no-results').should('exist')
   })
 
   it('Shows loading msg while waiting for the results', () => {
@@ -67,7 +67,7 @@ describe('Stream Search', () => {
     cy.get('.stream-list-error').should('exist')
   })
 
-  it.only('Opens a Stream from the Search Page', () => {
+  it('Opens a Stream from the Search Page', () => {
     cy.get('.cy-search input').type('league of legends')
     cy.get('.stream-card').first().click()
     cy.url().should('include', '/channel/')

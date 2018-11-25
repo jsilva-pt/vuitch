@@ -1,22 +1,22 @@
 <template>
   <div>
     <div class="search-section px-3 mt-3">
-        <v-text-field
-          :label="$t('search')"
-          @input="onChange"
-          v-model="q"
-          prepend-inner-icon="search"
-          clearable
-          hide-details
-          class="cy-search"
-        />
-        <v-text-field
-          :mask="limitMask"
-          v-model="limit"
-          :label="$t('limit')"
-          @change="setlimit"
-          class="limit cy-limit"
-        />
+      <v-text-field
+        :label="$t('search')"
+        @input="onChange"
+        v-model="q"
+        prepend-inner-icon="search"
+        clearable
+        hide-details
+        class="cy-search"
+      />
+      <v-text-field
+        :mask="limitMask"
+        v-model="limit"
+        :label="$t('limit')"
+        @change="setlimit"
+        class="limit cy-limit"
+      />
     </div>
 
     <StreamLoading
@@ -40,7 +40,7 @@
       v-else-if="streams"
       :streams="streams"
       @load-more="searchMoreStreams"
-      :limit="qLimit"
+      :limit="limitBeingUsed"
     />
 
   </div>
@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       q: null,
-      qLimit: null,
+      limitBeingUsed: null,
       defaultLimit: 25,
       limit: null,
       limitMask: '##'
@@ -88,7 +88,7 @@ export default {
   created () {
     this.q = this.query || ''
     this.limit = parseInt(localStorage.getItem('limit')) || this.defaultLimit
-    this.qLimit = this.limit
+    this.limitBeingUsed = this.limit
   },
   methods: {
     ...mapActions({
@@ -103,7 +103,7 @@ export default {
       }
     },
     onChange: debounce(function () {
-      this.qLimit = parseInt(this.limit)
+      this.limitBeingUsed = parseInt(this.limit)
       this.searchStreams({
         query: this.q,
         limit: this.limit

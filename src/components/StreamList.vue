@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="stream-list">
     <div class="cards">
       <stream-card
         v-for="stream in streams"
@@ -38,7 +38,8 @@ export default {
       type: Array
     },
     limit: {
-      type: Number
+      type: Number,
+      required: true
     }
   },
   computed: {
