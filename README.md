@@ -39,6 +39,15 @@ Material Design Component Framework.
 ### [Axios](https://github.com/axios/axios)
 Promise based HTTP client for the browser and node.js.
 
+### [Vue Test Utils](https://vue-test-utils.vuejs.org/)
+Vue Test Utils is the official unit testing utility library for Vue.js.
+
+### [Jest](https://jestjs.io/)
+Delightful JavaScript Testing :D
+
+### [Cypress](https://www.cypress.io/)
+Fast, easy and reliable testing for anything that runs in a browser.
+
 ## Possible improvements
 - [ ] Make the search always available when scrolling
 - [ ] Use an infinite scroll to display the stream results
