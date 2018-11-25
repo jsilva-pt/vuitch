@@ -1,5 +1,6 @@
 # vuitch
-Vue.js Application that allows to search and see for Twitch streams.
+[Vuitch](https://jsilva-pt.github.io/vuitch/) is a Vue.js Application that allows to search and see for Twitch streams.
+
 ## Project setup
 ``` bash
 yarn install
@@ -10,6 +11,9 @@ yarn build                  # Compiles and minifies for production
 yarn test:unit              # Run your unit tests
 yarn test:e2e               # Run your end-to-end tests
 yarn test:e2e:headless      # Run your end-to-end tests for production
+
+chmod +x deploy.sh          # Give execute permission
+./deploy.sh                 # Deploy the application to the github pages
 ```
 
 ## Dependencies
