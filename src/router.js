@@ -15,7 +15,15 @@ export default new Router({
     {
       path: '/channel/:name',
       name: 'stream-details',
-      component: () => import(/* webpackChunkName: "StreamDetails" */ './views/StreamDetails.vue')
+      component: () => import(/* webpackChunkName: "StreamDetails" */ './views/StreamDetails.vue'),
+      beforeEnter: (to, from, next) => {
+        if (from.name === null) {
+          // build history when accessing directly the stream page
+          window.history.replaceState({}, null, process.env.BASE_URL)
+          window.history.pushState({}, null, process.env.BASE_URL + to.params.name)
+        }
+        next()
+      }
     },
     {
       path: '*',

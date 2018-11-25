@@ -9,7 +9,7 @@
         class="my-2"
       />
     </div>
-    <div class="load-more mt-3">
+    <div class="load-more my-3">
       <v-btn
         v-if="hasNextPage"
         :dark="!streamsLoadingMore"

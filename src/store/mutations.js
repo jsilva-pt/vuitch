@@ -22,7 +22,9 @@ const STREAMS_LOADING_MORE = (state) => {
 
 const STREAMS_ADDED = (state, data) => {
   state.streamsLoadingMore = false
-  state.streams = state.streams.concat(data.streams)
+  // ignore duplicated streams sometimes sent by api
+  const uniqueStreams = data.streams.filter(x => !state.streams.some(y => y.id === x.id))
+  state.streams = state.streams.concat(uniqueStreams)
   state.nextPage = data.next
 }
 

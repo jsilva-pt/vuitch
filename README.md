@@ -1,5 +1,5 @@
 # vuitch
-[Vuitch](https://jsilva-pt.github.io/vuitch/) is a Vue.js Application that allows to search and see for Twitch streams.
+[Vuitch](https://jsilva-pt.github.io/vuitch/) is a Vue.js Application that allow to search and see Twitch streams.
 
 ## Project setup
 ``` bash

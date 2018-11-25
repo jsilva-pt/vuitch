@@ -1,13 +1,12 @@
 <template>
-  <StreamLoading
+  <StreamListError
+    v-if="streamError"
     class="mt-5"
-    v-if="streamLoading"
-    :msg="$t('loading_stream')"
   />
 
   <div v-else>
     <iframe
-      v-if="stream"
+      v-if="src"
       class="frame"
       :src="src"
       :height="height"
@@ -19,7 +18,8 @@
 
     <div
       v-if="stream"
-      class="details pa-3">
+      class="details pa-3"
+    >
       <div class="subheading">{{ stream.status }}</div>
       <div class="viewers">
         <v-icon class="mr-2">people</v-icon> <span class="cy-viewers">{{ stream.viewers }}</span>
@@ -29,12 +29,12 @@
   </div>
 </template>
 <script>
-import StreamLoading from '@/components/StreamLoading'
+import StreamListError from '@/components/StreamListError'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'stream-details',
   components: {
-    StreamLoading
+    StreamListError
   },
   data () {
     return {
@@ -45,11 +45,13 @@ export default {
   },
   created () {
     this.getStream(this.$route.params.name)
+    setInterval(() => {
+      this.getStream(this.$route.params.name)
+    }, 60000)
   },
   computed: {
     ...mapGetters({
       stream: 'stream',
-      streamLoading: 'streamLoading',
       streamError: 'streamError'
     })
   },

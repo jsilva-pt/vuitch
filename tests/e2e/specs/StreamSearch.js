@@ -37,7 +37,7 @@ describe('Stream Search', () => {
   })
 
   it('Shows no results msg if none provided', () => {
-    cy.get('.cy-search input').clear().type('aaaaaaaaaaaaaaaaaaaaaaaa')
+    cy.get('.cy-search input').clear().type('aaaaaaa7aaaaa gjdng jdnkg ndsgçn aksdnglksjafsaºj maf sda gdfgsdg dsg')
 
     cy.get('.stream-card').should('have.length', 0)
     cy.get('.stream-list-no-results').should('exist')
