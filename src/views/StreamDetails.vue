@@ -20,10 +20,16 @@
       v-if="stream"
       class="details pa-3"
     >
-      <div class="subheading">{{ stream.status }}</div>
+      <div class="subheading">
+        {{ stream.status }}
+      </div>
+
       <div class="viewers">
-        <v-icon class="mr-2">people</v-icon> <span class="cy-viewers">{{ stream.viewers }}</span>
-        <v-icon class="mx-2">remove_red_eye</v-icon> <span class="cy-views">{{ stream.views }}</span>
+        <v-icon class="mr-2">people</v-icon>
+        <span class="cy-viewers">{{ stream.viewers }}</span>
+
+        <v-icon class="mx-2">remove_red_eye</v-icon>
+        <span class="cy-views">{{ stream.views }}</span>
       </div>
     </div>
   </div>

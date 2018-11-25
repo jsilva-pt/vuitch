@@ -1,7 +1,9 @@
 <template>
   <div class="stream-list-error">
     <v-icon size="60">report_problem</v-icon>
-    <span class="subheading grey--text">{{ $t('error') }}</span>
+    <span class="subheading grey--text">
+      {{ $t('error') }}
+    </span>
   </div>
 </template>
 

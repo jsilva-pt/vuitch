@@ -2,10 +2,10 @@
   <v-card
     class="stream-card"
     hover
-    @click="$router.push({name: 'stream-details', params: { name: channelName }})">
+    @click="goToDetails">
     <v-img
       :src="thumb"
-      lazy-src="/stream_placeholder.jpg"
+      :lazy-src="placeholder"
       aspect-ratio="1"
       class="grey lighten-2"
       width="320"
@@ -18,12 +18,17 @@
         justify-center
         ma-0
       >
-        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+        <v-progress-circular
+          indeterminate
+          color="grey lighten-5"
+        />
       </v-layout>
     </v-img>
 
     <div class="pa-2">
-      <span class="subheading">{{ channelName }}</span>
+      <span class="subheading">
+        {{ channelName }}
+      </span>
     </div>
   </v-card>
 </template>
@@ -37,6 +42,19 @@ export default {
     },
     channelName: {
       type: String
+    }
+  },
+  data () {
+    return {
+      placeholder: `${process.env.BASE_URL}/stream_placeholder.jpg`
+    }
+  },
+  methods: {
+    goToDetails () {
+      this.$router.push({
+        name: 'stream-details',
+        params: { name: this.channelName }
+      })
     }
   }
 }

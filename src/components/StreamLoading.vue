@@ -2,10 +2,12 @@
   <div class="stream-loading">
     <v-progress-circular
       indeterminate
-      color="#f07838"
+      color="primary"
       class="loader mb-3"
     />
-    <span class="subheading grey--text">{{ msg }}</span>
+    <span class="subheading grey--text">
+      {{ msg }}
+    </span>
   </div>
 </template>
 

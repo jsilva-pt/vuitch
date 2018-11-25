@@ -1,7 +1,9 @@
 <template>
   <div class="stream-list-empty-query">
     <v-icon size="60">search</v-icon>
-    <span class="subheading grey--text">{{ $t('suggestion') }}</span>
+    <span class="subheading grey--text">
+      {{ $t('suggestion') }}
+    </span>
   </div>
 </template>
 

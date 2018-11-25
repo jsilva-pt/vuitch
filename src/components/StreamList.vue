@@ -16,7 +16,7 @@
         :loading="streamsLoadingMore"
         :disabled="streamsLoadingMore"
         @click="$emit('load-more')"
-        color="#4b367c"
+        color="primary"
         class="cy-load-more"
       >
         {{ $t('load_more', { num: limit}) }}
