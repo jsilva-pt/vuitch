@@ -29,15 +29,14 @@ const searchMoreStreams = ({ commit, state }) => {
 }
 
 const getStream = ({ commit, state }, id) => {
-  // commit('STREAM_LOADING')
+  commit('STREAM_LOADING')
 
   apiGetStream(id)
     .then((response) => {
-      console.log('yoo', response)
       commit('STREAM_UPDATED', response)
     })
     .catch(() => {
-      // commit('STREAM_ERROR')
+      commit('STREAM_ERROR')
     })
 }
 

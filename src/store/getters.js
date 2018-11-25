@@ -5,6 +5,8 @@ const streamsError = (state) => state.streamsError
 const hasNextPage = (state) => state.nextPage
 const query = (state) => state.query
 const stream = (state) => state.stream
+const streamLoading = (state) => state.streamLoading
+const streamError = (state) => state.streamError
 
 export default {
   streams,
@@ -13,5 +15,7 @@ export default {
   streamsError,
   hasNextPage,
   query,
-  stream
+  stream,
+  streamLoading,
+  streamError
 }

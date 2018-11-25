@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <StreamLoading
+    class="mt-5"
+    v-if="streamLoading"
+    :msg="$t('loading_stream')"
+  />
+
+  <div v-else>
     <iframe
       v-if="stream"
       class="frame"
@@ -16,21 +22,25 @@
       class="details pa-3">
       <div class="subheading">{{ stream.status }}</div>
       <div class="viewers">
-        <v-icon class="mr-2">people</v-icon> {{ stream.viewers }}
-        <v-icon class="mx-2">remove_red_eye</v-icon> {{ stream.views }}
+        <v-icon class="mr-2">people</v-icon> <span class="cy-viewers">{{ stream.viewers }}</span>
+        <v-icon class="mx-2">remove_red_eye</v-icon> <span class="cy-views">{{ stream.views }}</span>
       </div>
     </div>
   </div>
 </template>
 <script>
+import StreamLoading from '@/components/StreamLoading'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'stream-details',
+  components: {
+    StreamLoading
+  },
   data () {
     return {
       height: 400,
       width: window.innerWidth,
-      src: `https://player.twitch.tv/?channel=${this.$route.params.name}`
+      src: `${process.env.VUE_APP_TWITCH_PLAYER_URL}channel=${this.$route.params.name}`
     }
   },
   created () {
@@ -38,7 +48,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      stream: 'stream'
+      stream: 'stream',
+      streamLoading: 'streamLoading',
+      streamError: 'streamError'
     })
   },
   methods: {

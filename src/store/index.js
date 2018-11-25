@@ -13,7 +13,10 @@ const state = {
   streams: null,
   nextPage: null,
   query: null,
-  stream: null
+
+  stream: null,
+  streamLoading: false,
+  streamError: false
 }
 
 export default new Vuex.Store({

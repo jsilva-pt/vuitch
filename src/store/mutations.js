@@ -26,8 +26,19 @@ const STREAMS_ADDED = (state, data) => {
   state.nextPage = data.next
 }
 
+const STREAM_LOADING = (state) => {
+  state.streamLoading = true
+  state.streamError = false
+}
+
 const STREAM_UPDATED = (state, data) => {
+  state.streamLoading = false
   state.stream = data
+}
+
+const STREAM_ERROR = (state) => {
+  state.streamLoading = false
+  state.streamError = true
 }
 
 export default {
@@ -36,5 +47,8 @@ export default {
   STREAMS_UPDATED,
   STREAMS_ADDED,
   STREAMS_ERROR,
-  STREAM_UPDATED
+
+  STREAM_LOADING,
+  STREAM_UPDATED,
+  STREAM_ERROR
 }

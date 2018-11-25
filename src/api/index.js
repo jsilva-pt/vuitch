@@ -6,7 +6,7 @@ const apiSearchStreams = ({
   link,
   params }) => {
   return new Promise((resolve, reject) => {
-    var url = link || `${process.env.VUE_APP_API_BASE_URL}kraken/search/streams`
+    var url = link || `${process.env.VUE_APP_TWITCH_API_BASE_URL}kraken/search/streams`
 
     axios.get(url, { params })
       .then(response => {
@@ -45,10 +45,8 @@ const apiSearchStreams = ({
 
 const apiGetStream = (id) => {
   return new Promise((resolve, reject) => {
-    axios.get(`${process.env.VUE_APP_API_BASE_URL}kraken/streams/${id}`)
+    axios.get(`${process.env.VUE_APP_TWITCH_API_BASE_URL}kraken/streams/${id}`)
       .then(response => {
-        console.log(response)
-
         var {
           channel: {
             status,

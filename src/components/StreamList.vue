@@ -17,6 +17,7 @@
         :disabled="streamsLoadingMore"
         @click="$emit('load-more')"
         color="#4b367c"
+        class="cy-load-more"
       >
         {{ $t('load_more', { num: limit}) }}
       </v-btn>

@@ -1,8 +1,9 @@
 {
   "load_more": "Load {num} more",
+  "loading_stream": "Loading Stream",
+  "loading_streams": "Getting streams ...",
   "search": "Search streams",
   "limit": "limit results to #",
-  "loading": "Loading more streams ...",
   "no_results": "No streams for this search.",
   "error": "An error occured, please try later!",
   "suggestion": "Fill the search to start browsing for streams"

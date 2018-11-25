@@ -8,21 +8,20 @@
           prepend-inner-icon="search"
           clearable
           hide-details
+          class="cy-search"
         />
         <v-text-field
           :mask="limitMask"
-          type="number"
-          min="1"
-          max="99"
           v-model="limit"
           :label="$t('limit')"
           @change="setlimit"
-          class="number-of-items"
+          class="limit cy-limit"
         />
     </div>
 
     <StreamLoading
       v-if="streamsLoading"
+      :msg="$t('loading_streams')"
     />
 
     <StreamListError
@@ -118,7 +117,7 @@ export default {
 .search-section {
   display: flex;
 }
-.number-of-items {
+.limit {
   width: 100px;
   flex: none;
 }

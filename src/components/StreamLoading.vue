@@ -5,13 +5,19 @@
       color="#f07838"
       class="loader mb-3"
     />
-    <span class="subheading grey--text">{{ $t('loading') }}</span>
+    <span class="subheading grey--text">{{ msg }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'StreamLoading'
+  name: 'StreamLoading',
+  props: {
+    msg: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 
