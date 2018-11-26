@@ -46,7 +46,7 @@ export default {
   },
   data () {
     return {
-      placeholder: `${process.env.BASE_URL}/stream_placeholder.jpg`
+      placeholder: `${process.env.BASE_URL}stream_placeholder.jpg`
     }
   },
   methods: {

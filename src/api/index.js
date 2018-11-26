@@ -50,15 +50,19 @@ const apiGetStream = (id) => {
         var {
           channel: {
             status,
-            views
+            views,
+            display_name: name
           } = {},
-          viewers
+          viewers,
+          game
         } = response.data.stream
 
         resolve({
           viewers,
           views,
-          status
+          status,
+          game,
+          name
         })
       })
       .catch(() => {

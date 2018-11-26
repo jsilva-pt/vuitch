@@ -1,6 +1,12 @@
 <template>
+  <StreamLoading
+    v-if="streamLoading"
+    :msg="$t('loading_stream')"
+    class="mt-5"
+  />
+
   <StreamListError
-    v-if="streamError"
+    v-else-if="streamError"
     class="mt-5"
   />
 
@@ -20,26 +26,37 @@
       v-if="stream"
       class="details pa-3"
     >
+      <div class="first-line">
+        <div>
+          <span class="title cy-name">{{ stream.name }}</span>
+        </div>
+        <div class="viewers">
+          <v-icon class="mr-2">people</v-icon>
+          <span class="cy-viewers">{{ stream.viewers }}</span>
+          <v-icon class="mx-2">remove_red_eye</v-icon>
+          <span class="cy-views">{{ stream.views }}</span>
+        </div>
+      </div>
+
       <div class="subheading">
         {{ stream.status }}
       </div>
 
-      <div class="viewers">
-        <v-icon class="mr-2">people</v-icon>
-        <span class="cy-viewers">{{ stream.viewers }}</span>
-
-        <v-icon class="mx-2">remove_red_eye</v-icon>
-        <span class="cy-views">{{ stream.views }}</span>
+      <div class="game">
+        <v-icon class="mr-2">games</v-icon>
+        <span class="cy-game">{{ stream.game }}</span>
       </div>
     </div>
   </div>
 </template>
 <script>
 import StreamListError from '@/components/StreamListError'
+import StreamLoading from '@/components/StreamLoading'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'stream-details',
   components: {
+    StreamLoading,
     StreamListError
   },
   data () {
@@ -52,18 +69,20 @@ export default {
   created () {
     this.getStream(this.$route.params.name)
     setInterval(() => {
-      this.getStream(this.$route.params.name)
+      this.getStreamInfo(this.$route.params.name)
     }, 60000)
   },
   computed: {
     ...mapGetters({
       stream: 'stream',
+      streamLoading: 'streamLoading',
       streamError: 'streamError'
     })
   },
   methods: {
     ...mapActions({
-      getStream: 'getStream'
+      getStream: 'getStream',
+      getStreamInfo: 'getStreamInfo'
     })
   }
 }
@@ -77,11 +96,17 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
+.first-line {
+  display: flex;
+  justify-content: space-between;
+}
 .viewers {
   text-align: right;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+}
+.game {
+  display: flex;
+  align-items: center;
 }
 </style>

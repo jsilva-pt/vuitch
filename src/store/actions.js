@@ -40,8 +40,19 @@ const getStream = ({ commit, state }, id) => {
     })
 }
 
+const getStreamInfo = ({ commit, state }, id) => {
+  apiGetStream(id)
+    .then((response) => {
+      commit('STREAM_UPDATED', response)
+    })
+    .catch(() => {
+      commit('STREAM_ERROR')
+    })
+}
+
 export default {
   getStream,
+  getStreamInfo,
   searchStreams,
   searchMoreStreams
 }
