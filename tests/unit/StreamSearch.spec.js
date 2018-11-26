@@ -8,6 +8,7 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 Vue.use(Vuex)
 Vue.use(Vuetify)
+Vue.config.silent = true
 
 const i18n = new VueI18n({
   locale: 'en',

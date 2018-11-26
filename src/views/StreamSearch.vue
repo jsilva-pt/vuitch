@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search-section px-3 mt-3">
+    <v-form ref="form" class="search-section px-3 mt-3">
       <v-text-field
         :label="$t('search')"
         @input="onChange"
@@ -11,13 +11,15 @@
         class="cy-search"
       />
       <v-text-field
+        ref="limit"
         :mask="limitMask"
         v-model="limit"
         :label="$t('limit')"
+        :rules="limitRules"
         @change="setlimit"
         class="limit cy-limit"
       />
-    </div>
+    </v-form>
 
     <StreamLoading
       v-if="streamsLoading"
@@ -68,7 +70,8 @@ export default {
       limitBeingUsed: null,
       defaultLimit: 25,
       limit: null,
-      limitMask: '##'
+      limitMask: '###',
+      limitRules: [value => (value > 0 && value <= 100) || 'from 1 to 100']
     }
   },
   computed: {
@@ -96,7 +99,7 @@ export default {
       searchMoreStreams: 'searchMoreStreams'
     }),
     setlimit () {
-      if (this.limit) {
+      if (this.$refs.form.validate()) {
         localStorage.setItem('limit', this.limit)
       } else {
         this.limit = parseInt(localStorage.getItem('limit'))

@@ -12,6 +12,7 @@ const STREAMS_UPDATED = (state, data) => {
 
 const STREAMS_ERROR = (state) => {
   state.streamsLoading = false
+  state.streamsLoadingMore = false
   state.streamsError = true
 }
 
