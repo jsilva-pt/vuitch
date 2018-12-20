@@ -61,6 +61,7 @@ export default {
   },
   data () {
     return {
+      interval: null,
       height: 400,
       width: window.innerWidth,
       src: `${process.env.VUE_APP_TWITCH_PLAYER_URL}channel=${this.$route.params.name}`
@@ -68,9 +69,12 @@ export default {
   },
   created () {
     this.getStream(this.$route.params.name)
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.getStreamInfo(this.$route.params.name)
-    }, 60000)
+    }, 1000)
+  },
+  beforeDestroy () {
+    clearInterval(this.interval)
   },
   computed: {
     ...mapGetters({
